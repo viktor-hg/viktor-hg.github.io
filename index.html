@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Viktor — Senior Creative Producer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:         #F2F0EC;
+      --bg-card:    #F8F7F5;
+      --ink:        #111110;
+      --ink-muted:  #6D6F73;
+      --rule:       #C4B49A;
+      --rule-soft:  rgba(196, 180, 154, 0.55);
+      --maroon:     #6B2330;
+      --embed-bg:   #161614;
+      --max-w:      1160px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    em, .accent {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--maroon);
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 56px;
+      background: var(--bg);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.4s;
+    }
+    nav.scrolled { border-color: var(--rule-soft); }
+    .nav-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 19px;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+      color: var(--maroon);
+    }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--ink-muted);
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--maroon); }
+
+    /* ── REVEAL (page-load sequence) ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(14px);
+      animation: revealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .reveal-1 { animation-delay: 0.05s; }
+    .reveal-2 { animation-delay: 0.18s; }
+    .reveal-3 { animation-delay: 0.30s; }
+    .reveal-4 { animation-delay: 0.42s; }
+    .reveal-5 { animation-delay: 0.54s; }
+    @keyframes revealUp {
+      to { opacity: 1; transform: none; }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 152px 56px 110px;
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .photo-placeholder {
+      background: #DCDFE5;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: var(--ink-muted);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.55;
+    }
+    .photo-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      opacity: 1;
+    }
+    .hero-photo { aspect-ratio: 4/5; }
+    .hero-text { text-align: right; }
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--maroon);
+      margin-bottom: 22px;
+      font-weight: 500;
+    }
+    .hero-name {
+      font-family: 'DM Serif Display', serif;
+      font-weight: 400;
+      font-size: clamp(54px, 6.6vw, 84px);
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      margin-bottom: 28px;
+      white-space: nowrap;
+    }
+    .hero-rule {
+      width: 56px;
+      height: 2px;
+      background: var(--rule);
+      margin: 0 0 28px auto;
+    }
+    .hero-bio {
+      font-size: 16px;
+      color: var(--ink-muted);
+      line-height: 1.75;
+      max-width: 460px;
+      margin: 0 0 0 auto;
+    }
+    .hero-contact {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: flex-end;
+      margin-top: 28px;
+    }
+    .hero-contact .val {
+      font-size: 18px;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 1px;
+      transition: border-color 0.25s;
+    }
+    .hero-contact a.val:hover { border-color: var(--maroon); color: var(--maroon); }
+
+    /* ── SECTION ── */
+    .section {
+      border-top: 1px solid var(--rule-soft);
+      padding: 120px 56px;
+    }
+    .section-inner { max-width: var(--max-w); margin: 0 auto; }
+
+    .section-heading {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+      margin-bottom: 48px;
+    }
+    .section-heading h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(24px, 3vw, 32px);
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      line-height: 1.1;
+    }
+    .section-heading .sub {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      font-weight: 500;
+      padding-top: 4px;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .section-heading .sub.visible { opacity: 1; transform: none; }
+
+    /* ── ABOUT INTRO ── */
+    .about-intro {
+      font-size: 17px;
+      line-height: 1.85;
+      color: var(--ink);
+      margin-bottom: 56px;
+    }
+    .about-intro .placeholder-note {
+      display: block;
+      margin-top: 14px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-style: normal;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      opacity: 0.7;
+    }
+
+    /* ── EMBED ── */
+    .embed-wrap {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      background: var(--embed-bg);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .embed-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .embed-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #444;
+      font-size: 12px;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      gap: 14px;
+    }
+    .embed-placeholder svg { opacity: 0.25; }
+
+    /* ── SPECIALTY REELS ── */
+    .reels-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    .reel-card { display: flex; flex-direction: column; }
+    .reel-card .reel-meta { margin-top: 16px; }
+    .reel-card h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 18px;
+      font-weight: 400;
+      margin-bottom: 6px;
+      letter-spacing: 0.01em;
+    }
+    .reel-card p {
+      font-size: 13px;
+      color: var(--ink-muted);
+      line-height: 1.6;
+    }
+
+    /* ── WORK GRID ── */
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 44px 28px;
+    }
+    .work-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--bg-card);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+    }
+    .work-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(27, 42, 76, 0.14);
+    }
+    .work-card .embed-wrap { border-radius: 0; }
+    .work-card-body {
+      padding: 18px 20px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+    }
+    .work-card-body h4 {
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+    }
+    .work-card-body p {
+      font-size: 15px;
+      color: var(--ink-muted);
+      line-height: 1.8;
+      margin-top: 4px;
+    }
+
+    /* ── CONTACT ── */
+    #contact .contact-inner {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .contact-text h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(26px, 3.5vw, 38px);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
+    }
+    .contact-text p {
+      color: var(--ink-muted);
+      margin-bottom: 40px;
+      line-height: 1.75;
+      max-width: 380px;
+    }
+    .contact-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .contact-list li {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .contact-list .c-label {
+      font-size: 10px;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      font-weight: 400;
+    }
+    .contact-list a,
+    .contact-list .c-val {
+      font-size: 15px;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule-soft);
+      padding-bottom: 2px;
+      display: inline-block;
+      transition: border-color 0.25s;
+    }
+    .contact-list a:hover { border-color: var(--maroon); color: var(--maroon); }
+
+    .contact-photo {
+      aspect-ratio: 4/5;
+      width: 340px;
+      margin-left: auto;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--rule-soft);
+      padding: 30px 56px;
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+      color: var(--ink-muted);
+      letter-spacing: 0.03em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; padding: 120px 36px 72px; gap: 40px; }
+      .hero-photo { max-width: 280px; }
+      .hero-text { text-align: left; }
+      .hero-rule { margin-left: 0; }
+      .hero-bio { margin: 0; }
+      .hero-contact { align-items: flex-start; }
+      .section { padding: 72px 36px; }
+      .work-grid { grid-template-columns: repeat(2, 1fr); }
+      #contact .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+      .contact-photo { width: 280px; margin-left: 0; }
+      nav { padding: 18px 36px; }
+      footer { padding: 24px 36px; }
+    }
+    @media (max-width: 580px) {
+      .hero { padding: 108px 24px 60px; }
+      .section { padding: 60px 24px; }
+      .reels-grid { grid-template-columns: 1fr; gap: 48px; }
+      .work-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      nav { padding: 16px 24px; }
+      footer { padding: 20px 24px; flex-direction: column; gap: 6px; text-align: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .section-heading .sub { opacity: 1; transform: none; transition: none; }
+      .work-card:hover { transform: none; box-shadow: none; }
+      .reveal { opacity: 1; transform: none; animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="#" class="nav-name">Viktor Eriksson</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#reels">Reels</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="photo-placeholder hero-photo reveal reveal-1">
+      <!-- REPLACE: <img src="photo.jpg" alt="Viktor" /> -->
+      Your photo here
+    </div>
+    <div class="hero-text">
+      <p class="hero-eyebrow reveal reveal-2">Senior Creative Producer</p>
+      <h1 class="hero-name reveal reveal-3">Viktor Eriksson</h1>
+      <div class="hero-rule reveal reveal-4"></div>
+      <p class="hero-bio reveal reveal-5">I make video that moves people — from long-form brand films to sports edits and social-first content. Based in [City]. Available for freelance.</p>
+      <ul class="hero-contact reveal reveal-5">
+        <li><a href="mailto:you@youremail.com" class="val">you@youremail.com</a></li>
+        <li><span class="val">+1 (000) 000-0000</span></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="section-inner">
+      <div class="section-heading">
+        <h2>About <em>Viktor</em></h2>
+      </div>
+
+      <p class="about-intro">[Placeholder — replace with your own introduction] I'm a creative producer with a background spanning sports broadcast, branded content, and social-first campaigns. I lead projects end to end — from concept and shoot to final cut — with an eye for pacing, story, and craft. Recent work has been produced for [client], [client], and [client].
+        <span class="placeholder-note">Swap this paragraph for 3–4 sentences on who you are, what you do, and your top credits.</span>
+      </p>
+
+      <div class="embed-wrap">
+        <!-- REPLACE with your iframe, e.g.:
+             <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+             <iframe src="https://player.vimeo.com/video/VIDEO_ID" allowfullscreen></iframe>
+        -->
+        <div class="embed-placeholder">
+          <svg width="52" height="52" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="22" stroke="#F2F0EC" stroke-width="1.5"/>
+            <polygon points="20,14 38,24 20,34" fill="#F2F0EC"/>
+          </svg>
+          Paste sizzle reel embed here
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECIALTY REELS -->
+  <section class="section" id="reels">
+    <div class="section-inner">
+      <div class="section-heading">
+        <h2>Featured <em>Reels</em></h2>
+      </div>
+      <div class="reels-grid">
+
+        <div class="reel-card">
+          <div class="embed-wrap">
+            <div class="embed-placeholder">
+              <svg width="38" height="38" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="24" cy="24" r="22" stroke="#F2F0EC" stroke-width="1.5"/>
+                <polygon points="20,14 38,24 20,34" fill="#F2F0EC"/>
+              </svg>
+              Sports reel embed
+            </div>
+          </div>
+          <div class="reel-meta">
+            <h3>Sports</h3>
+            <p>Highlights, game-day coverage &amp; athlete stories — built for energy and pacing.</p>
+          </div>
+        </div>
+
+        <div class="reel-card">
+          <div class="embed-wrap">
+            <div class="embed-placeholder">
+              <svg width="38" height="38" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="24" cy="24" r="22" stroke="#F2F0EC" stroke-width="1.5"/>
+                <polygon points="20,14 38,24 20,34" fill="#F2F0EC"/>
+              </svg>
+              Social media reel embed
+            </div>
+          </div>
+          <div class="reel-meta">
+            <h3>Social Media</h3>
+            <p>Short-form, platform-native content — made to stop the scroll and hold attention.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK SHOWCASE -->
+  <section class="section" id="work">
+    <div class="section-inner">
+      <div class="section-heading">
+        <h2>Selected <em>Work</em></h2>
+      </div>
+      <div class="work-grid">
+
+        <!-- Copy this block for each project — up to ~9 -->
+        <div class="work-card">
+          <div class="embed-wrap">
+            <div class="embed-placeholder" style="font-size:11px;">
+              <svg width="30" height="30" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="24" cy="24" r="22" stroke="#F2F0EC" stroke-width="1.5"/>
+                <polygon points="20,14 38,24 20,34" fill="#F2F0EC"/>
+              </svg>
+              Embed video
+            </div>
+          </div>
+          <div class="work-card-body">
+            <h4>Project Title</h4>
+            <p>What the project was for, and who it was made for. The role you played on it — directing, producing, editing, or all three. The approach or concept behind the edit. A specific creative or technical challenge you solved. What made it interesting to work on, or how it performed.</p>
+          </div>
+        </div>
+
+        <div class="work-card">
+          <div class="embed-wrap">
+            <div class="embed-placeholder" style="font-size:11px;">
+              <svg width="30" height="30" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="24" cy="24" r="22" stroke="#F2F0EC" stroke-width="1.5"/>
+                <polygon points="20,14 38,24 20,34" fill="#F2F0EC"/>
+              </svg>
+              Embed video
+            </div>
+          </div>
+          <div class="work-card-body">
+            <h4>Project Title</h4>
+            <p>What the project was for, and who it was made for. The role you played on it — directing, producing, editing, or all three. The approach or concept behind the edit. A specific creative or technical challenge you solved. What made it interesting to work on, or how it performed.</p>
+          </div>
+        </div>
+
+        <div class="work-card">
+          <div class="embed-wrap">
+            <div class="embed-placeholder" style="font-size:11px;">
+              <svg width="30" height="30" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="24" cy="24" r="22" stroke="#F2F0EC" stroke-width="1.5"/>
+                <polygon points="20,14 38,24 20,34" fill="#F2F0EC"/>
+              </svg>
+              Embed video
+            </div>
+          </div>
+          <div class="work-card-body">
+            <h4>Project Title</h4>
+            <p>What the project was for, and who it was made for. The role you played on it — directing, producing, editing, or all three. The approach or concept behind the edit. A specific creative or technical challenge you solved. What made it interesting to work on, or how it performed.</p>
+          </div>
+        </div>
+
+        <div class="work-card">
+          <div class="embed-wrap">
+            <div class="embed-placeholder" style="font-size:11px;">
+              <svg width="30" height="30" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="24" cy="24" r="22" stroke="#F2F0EC" stroke-width="1.5"/>
+                <polygon points="20,14 38,24 20,34" fill="#F2F0EC"/>
+              </svg>
+              Embed video
+            </div>
+          </div>
+          <div class="work-card-body">
+            <h4>Project Title</h4>
+            <p>What the project was for, and who it was made for. The role you played on it — directing, producing, editing, or all three. The approach or concept behind the edit. A specific creative or technical challenge you solved. What made it interesting to work on, or how it performed.</p>
+          </div>
+        </div>
+
+        <div class="work-card">
+          <div class="embed-wrap">
+            <div class="embed-placeholder" style="font-size:11px;">
+              <svg width="30" height="30" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="24" cy="24" r="22" stroke="#F2F0EC" stroke-width="1.5"/>
+                <polygon points="20,14 38,24 20,34" fill="#F2F0EC"/>
+              </svg>
+              Embed video
+            </div>
+          </div>
+          <div class="work-card-body">
+            <h4>Project Title</h4>
+            <p>What the project was for, and who it was made for. The role you played on it — directing, producing, editing, or all three. The approach or concept behind the edit. A specific creative or technical challenge you solved. What made it interesting to work on, or how it performed.</p>
+          </div>
+        </div>
+
+        <div class="work-card">
+          <div class="embed-wrap">
+            <div class="embed-placeholder" style="font-size:11px;">
+              <svg width="30" height="30" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="24" cy="24" r="22" stroke="#F2F0EC" stroke-width="1.5"/>
+                <polygon points="20,14 38,24 20,34" fill="#F2F0EC"/>
+              </svg>
+              Embed video
+            </div>
+          </div>
+          <div class="work-card-body">
+            <h4>Project Title</h4>
+            <p>What the project was for, and who it was made for. The role you played on it — directing, producing, editing, or all three. The approach or concept behind the edit. A specific creative or technical challenge you solved. What made it interesting to work on, or how it performed.</p>
+          </div>
+        </div>
+
+        <div class="work-card">
+          <div class="embed-wrap">
+            <div class="embed-placeholder" style="font-size:11px;">
+              <svg width="30" height="30" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="24" cy="24" r="22" stroke="#F2F0EC" stroke-width="1.5"/>
+                <polygon points="20,14 38,24 20,34" fill="#F2F0EC"/>
+              </svg>
+              Embed video
+            </div>
+          </div>
+          <div class="work-card-body">
+            <h4>Project Title</h4>
+            <p>What the project was for, and who it was made for. The role you played on it — directing, producing, editing, or all three. The approach or concept behind the edit. A specific creative or technical challenge you solved. What made it interesting to work on, or how it performed.</p>
+          </div>
+        </div>
+        <div class="work-card">
+          <div class="embed-wrap">
+            <div class="embed-placeholder" style="font-size:11px;">
+              <svg width="30" height="30" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="24" cy="24" r="22" stroke="#F2F0EC" stroke-width="1.5"/>
+                <polygon points="20,14 38,24 20,34" fill="#F2F0EC"/>
+              </svg>
+              Embed video
+            </div>
+          </div>
+          <div class="work-card-body">
+            <h4>Project Title</h4>
+            <p>What the project was for, and who it was made for. The role you played on it — directing, producing, editing, or all three. The approach or concept behind the edit. A specific creative or technical challenge you solved. What made it interesting to work on, or how it performed.</p>
+          </div>
+        </div>
+        <div class="work-card">
+          <div class="embed-wrap">
+            <div class="embed-placeholder" style="font-size:11px;">
+              <svg width="30" height="30" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="24" cy="24" r="22" stroke="#F2F0EC" stroke-width="1.5"/>
+                <polygon points="20,14 38,24 20,34" fill="#F2F0EC"/>
+              </svg>
+              Embed video
+            </div>
+          </div>
+          <div class="work-card-body">
+            <h4>Project Title</h4>
+            <p>What the project was for, and who it was made for. The role you played on it — directing, producing, editing, or all three. The approach or concept behind the edit. A specific creative or technical challenge you solved. What made it interesting to work on, or how it performed.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="section-inner">
+      <div class="section-heading">
+        <h2>Let's make something <em>worth watching</em></h2>
+      </div>
+      <div class="contact-inner">
+        <div class="contact-text">
+          <p>I'm a freelance creative producer and video editor with experience across brand films, sports content, and social-first campaigns. Available for projects of all sizes — don't hesitate to reach out.</p>
+          <ul class="contact-list">
+            <li>
+              <span class="c-label">Email</span>
+              <a href="mailto:you@youremail.com">you@youremail.com</a>
+            </li>
+            <li>
+              <span class="c-label">Phone</span>
+              <span class="c-val">+1 (000) 000-0000</span>
+            </li>
+            <li>
+              <span class="c-label">LinkedIn</span>
+              <a href="https://linkedin.com/in/yourhandle" target="_blank" rel="noopener">linkedin.com/in/yourhandle</a>
+            </li>
+            <li>
+              <span class="c-label">Instagram</span>
+              <a href="https://instagram.com/yourhandle" target="_blank" rel="noopener">@yourhandle</a>
+            </li>
+            <li>
+              <span class="c-label">Based in</span>
+              <span class="c-val">Your City</span>
+            </li>
+          </ul>
+        </div>
+        <div class="photo-placeholder contact-photo">
+          <!-- REPLACE: <img src="photo-2.jpg" alt="Viktor" /> -->
+          Your photo here
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© 2026 Viktor</span>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    const subs = document.querySelectorAll('.section-heading .sub');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    subs.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

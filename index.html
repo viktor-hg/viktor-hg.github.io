@@ -279,7 +279,13 @@
     }
 
     /* ── WORK GRID ── */
-    .work-grid {
+    .work-grid-large {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+    .work-grid-small {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 44px 28px;
@@ -294,7 +300,7 @@
     }
     .work-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 16px 40px rgba(27, 42, 76, 0.14);
+      box-shadow: 0 16px 40px rgba(17, 17, 16, 0.12);
     }
     .work-card .embed-wrap { border-radius: 0; }
     .work-card-body {
@@ -315,6 +321,9 @@
       line-height: 1.8;
       margin-top: 4px;
     }
+    .work-card--large .work-card-body { padding: 22px 24px 26px; gap: 8px; }
+    .work-card--large .work-card-body h4 { font-size: 22px; }
+    .work-card--large .work-card-body p { font-size: 15.5px; }
 
     /* ── CONTACT ── */
     #contact .contact-inner {
@@ -393,7 +402,7 @@
       .hero-bio { margin: 0; }
       .hero-contact { align-items: flex-start; }
       .section { padding: 72px 36px; }
-      .work-grid { grid-template-columns: repeat(2, 1fr); }
+      .work-grid-small { grid-template-columns: repeat(2, 1fr); }
       #contact .contact-inner { grid-template-columns: 1fr; gap: 48px; }
       .contact-photo { width: 280px; margin-left: 0; }
       nav { padding: 18px 36px; }
@@ -403,7 +412,8 @@
       .hero { padding: 108px 24px 60px; }
       .section { padding: 60px 24px; }
       .reels-grid { grid-template-columns: 1fr; gap: 48px; }
-      .work-grid { grid-template-columns: 1fr; }
+      .work-grid-large { grid-template-columns: 1fr; gap: 48px; margin-bottom: 40px; }
+      .work-grid-small { grid-template-columns: 1fr; }
       .nav-links { display: none; }
       nav { padding: 16px 24px; }
       footer { padding: 20px 24px; flex-direction: column; gap: 6px; text-align: center; }
@@ -524,10 +534,25 @@
       <div class="section-heading">
         <h2>Selected <em>Work</em></h2>
       </div>
-      <div class="work-grid">
+      <div class="work-grid-large">
 
-        <!-- Copy this block for each project — up to ~9 -->
-        <div class="work-card">
+        <div class="work-card work-card--large">
+          <div class="embed-wrap">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/bZBesiTtBmQ?modestbranding=1&rel=0&iv_load_policy=3"
+              title="Selected work — project video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy">
+            </iframe>
+          </div>
+          <div class="work-card-body">
+            <h4>Project Title</h4>
+            <p>What the project was for, and who it was made for. The role you played on it — directing, producing, editing, or all three. The approach or concept behind the edit. A specific creative or technical challenge you solved. What made it interesting to work on, or how it performed.</p>
+          </div>
+        </div>
+
+        <div class="work-card work-card--large">
           <div class="embed-wrap">
             <div class="embed-placeholder" style="font-size:11px;">
               <svg width="30" height="30" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -543,37 +568,9 @@
           </div>
         </div>
 
-        <div class="work-card">
-          <div class="embed-wrap">
-            <div class="embed-placeholder" style="font-size:11px;">
-              <svg width="30" height="30" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="24" cy="24" r="22" stroke="#F2F0EC" stroke-width="1.5"/>
-                <polygon points="20,14 38,24 20,34" fill="#F2F0EC"/>
-              </svg>
-              Embed video
-            </div>
-          </div>
-          <div class="work-card-body">
-            <h4>Project Title</h4>
-            <p>What the project was for, and who it was made for. The role you played on it — directing, producing, editing, or all three. The approach or concept behind the edit. A specific creative or technical challenge you solved. What made it interesting to work on, or how it performed.</p>
-          </div>
-        </div>
+      </div>
 
-        <div class="work-card">
-          <div class="embed-wrap">
-            <div class="embed-placeholder" style="font-size:11px;">
-              <svg width="30" height="30" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="24" cy="24" r="22" stroke="#F2F0EC" stroke-width="1.5"/>
-                <polygon points="20,14 38,24 20,34" fill="#F2F0EC"/>
-              </svg>
-              Embed video
-            </div>
-          </div>
-          <div class="work-card-body">
-            <h4>Project Title</h4>
-            <p>What the project was for, and who it was made for. The role you played on it — directing, producing, editing, or all three. The approach or concept behind the edit. A specific creative or technical challenge you solved. What made it interesting to work on, or how it performed.</p>
-          </div>
-        </div>
+      <div class="work-grid-small">
 
         <div class="work-card">
           <div class="embed-wrap">
@@ -638,6 +635,7 @@
             <p>What the project was for, and who it was made for. The role you played on it — directing, producing, editing, or all three. The approach or concept behind the edit. A specific creative or technical challenge you solved. What made it interesting to work on, or how it performed.</p>
           </div>
         </div>
+
         <div class="work-card">
           <div class="embed-wrap">
             <div class="embed-placeholder" style="font-size:11px;">
@@ -653,6 +651,7 @@
             <p>What the project was for, and who it was made for. The role you played on it — directing, producing, editing, or all three. The approach or concept behind the edit. A specific creative or technical challenge you solved. What made it interesting to work on, or how it performed.</p>
           </div>
         </div>
+
         <div class="work-card">
           <div class="embed-wrap">
             <div class="embed-placeholder" style="font-size:11px;">
@@ -668,6 +667,8 @@
             <p>What the project was for, and who it was made for. The role you played on it — directing, producing, editing, or all three. The approach or concept behind the edit. A specific creative or technical challenge you solved. What made it interesting to work on, or how it performed.</p>
           </div>
         </div>
+
+
       </div>
     </div>
   </section>

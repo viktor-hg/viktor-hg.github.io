@@ -264,6 +264,15 @@
       gap: 40px;
     }
     .reel-card { display: flex; flex-direction: column; }
+    .reel-card .embed-wrap,
+    .about-intro + .embed-wrap {
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+    }
+    .reel-card:hover .embed-wrap,
+    .about-intro + .embed-wrap:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(17, 17, 16, 0.12);
+    }
     .reel-card .reel-meta { margin-top: 16px; }
     .reel-card h3 {
       font-family: 'DM Serif Display', serif;
@@ -422,6 +431,8 @@
     @media (prefers-reduced-motion: reduce) {
       .section-heading .sub { opacity: 1; transform: none; transition: none; }
       .work-card:hover { transform: none; box-shadow: none; }
+      .reel-card:hover .embed-wrap,
+      .about-intro + .embed-wrap:hover { transform: none; box-shadow: none; }
       .reveal { opacity: 1; transform: none; animation: none; }
     }
   </style>
@@ -442,8 +453,7 @@
   <!-- HERO -->
   <header class="hero">
     <div class="photo-placeholder hero-photo reveal reveal-1">
-      <!-- REPLACE: <img src="photo.jpg" alt="Viktor" /> -->
-      Your photo here
+      <img src="images/viktor-hero.jpg" alt="Viktor" />
     </div>
     <div class="hero-text">
       <p class="hero-eyebrow reveal reveal-2">Senior Creative Producer</p>
@@ -534,12 +544,13 @@
       <div class="section-heading">
         <h2>Selected <em>Work</em></h2>
       </div>
+      <p class="about-intro" style="margin-bottom: 48px;">I've cut a lot of promos over the years. Here's a handful of pieces that show how I think about creativity, storytelling, and editing — attention-grabbing cuts with a bit of thought behind them.</p>
       <div class="work-grid-large">
 
         <div class="work-card work-card--large">
           <div class="embed-wrap">
             <iframe
-              src="https://www.youtube-nocookie.com/embed/bZBesiTtBmQ?modestbranding=1&rel=0&iv_load_policy=3"
+              src="https://www.youtube.com/embed/bZBesiTtBmQ?modestbranding=1&rel=0&iv_load_policy=3"
               title="Selected work — project video"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen
@@ -554,13 +565,13 @@
 
         <div class="work-card work-card--large">
           <div class="embed-wrap">
-            <div class="embed-placeholder" style="font-size:11px;">
-              <svg width="30" height="30" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="24" cy="24" r="22" stroke="#F2F0EC" stroke-width="1.5"/>
-                <polygon points="20,14 38,24 20,34" fill="#F2F0EC"/>
-              </svg>
-              Embed video
-            </div>
+            <iframe
+              src="https://www.youtube.com/embed/x1wgjoiHMNs?modestbranding=1&rel=0&iv_load_policy=3"
+              title="Selected work — project video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy">
+            </iframe>
           </div>
           <div class="work-card-body">
             <h4>Project Title</h4>
@@ -574,13 +585,93 @@
 
         <div class="work-card">
           <div class="embed-wrap">
-            <div class="embed-placeholder" style="font-size:11px;">
-              <svg width="30" height="30" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="24" cy="24" r="22" stroke="#F2F0EC" stroke-width="1.5"/>
-                <polygon points="20,14 38,24 20,34" fill="#F2F0EC"/>
-              </svg>
-              Embed video
-            </div>
+            <iframe
+              src="https://www.youtube.com/embed/0eDbNHkZ_xA?modestbranding=1&rel=0&iv_load_policy=3"
+              title="Selected work — project video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy">
+            </iframe>
+          </div>
+          <div class="work-card-body">
+            <h4>Project Title</h4>
+            <p>What the project was for, and who it was made for. The role you played on it — directing, producing, editing, or all three. The approach or concept behind the edit. A specific creative or technical challenge you solved. What made it interesting to work on, or how it performed.</p>
+          </div>
+        </div>
+
+        <div class="work-card">
+          <div class="embed-wrap">
+            <iframe
+              src="https://www.youtube.com/embed/Ykq9zIi5Ua0?modestbranding=1&rel=0&iv_load_policy=3"
+              title="Selected work — project video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy">
+            </iframe>
+          </div>
+          <div class="work-card-body">
+            <h4>Project Title</h4>
+            <p>What the project was for, and who it was made for. The role you played on it — directing, producing, editing, or all three. The approach or concept behind the edit. A specific creative or technical challenge you solved. What made it interesting to work on, or how it performed.</p>
+          </div>
+        </div>
+
+        <div class="work-card">
+          <div class="embed-wrap">
+            <iframe
+              src="https://www.youtube.com/embed/6u2Og5qeo7g?modestbranding=1&rel=0&iv_load_policy=3"
+              title="Selected work — project video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy">
+            </iframe>
+          </div>
+          <div class="work-card-body">
+            <h4>Project Title</h4>
+            <p>What the project was for, and who it was made for. The role you played on it — directing, producing, editing, or all three. The approach or concept behind the edit. A specific creative or technical challenge you solved. What made it interesting to work on, or how it performed.</p>
+          </div>
+        </div>
+
+        <div class="work-card">
+          <div class="embed-wrap">
+            <iframe
+              src="https://www.youtube.com/embed/oy248I34k5I?modestbranding=1&rel=0&iv_load_policy=3"
+              title="Selected work — project video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy">
+            </iframe>
+          </div>
+          <div class="work-card-body">
+            <h4>Project Title</h4>
+            <p>What the project was for, and who it was made for. The role you played on it — directing, producing, editing, or all three. The approach or concept behind the edit. A specific creative or technical challenge you solved. What made it interesting to work on, or how it performed.</p>
+          </div>
+        </div>
+
+        <div class="work-card">
+          <div class="embed-wrap">
+            <iframe
+              src="https://www.youtube.com/embed/6tzTKedfSjo?modestbranding=1&rel=0&iv_load_policy=3"
+              title="Selected work — project video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy">
+            </iframe>
+          </div>
+          <div class="work-card-body">
+            <h4>Project Title</h4>
+            <p>What the project was for, and who it was made for. The role you played on it — directing, producing, editing, or all three. The approach or concept behind the edit. A specific creative or technical challenge you solved. What made it interesting to work on, or how it performed.</p>
+          </div>
+        </div>
+
+        <div class="work-card">
+          <div class="embed-wrap">
+            <iframe
+              src="https://www.youtube.com/embed/aT453qgHKgE?modestbranding=1&rel=0&iv_load_policy=3"
+              title="Selected work — project video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy">
+            </iframe>
           </div>
           <div class="work-card-body">
             <h4>Project Title</h4>
@@ -635,39 +726,6 @@
             <p>What the project was for, and who it was made for. The role you played on it — directing, producing, editing, or all three. The approach or concept behind the edit. A specific creative or technical challenge you solved. What made it interesting to work on, or how it performed.</p>
           </div>
         </div>
-
-        <div class="work-card">
-          <div class="embed-wrap">
-            <div class="embed-placeholder" style="font-size:11px;">
-              <svg width="30" height="30" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="24" cy="24" r="22" stroke="#F2F0EC" stroke-width="1.5"/>
-                <polygon points="20,14 38,24 20,34" fill="#F2F0EC"/>
-              </svg>
-              Embed video
-            </div>
-          </div>
-          <div class="work-card-body">
-            <h4>Project Title</h4>
-            <p>What the project was for, and who it was made for. The role you played on it — directing, producing, editing, or all three. The approach or concept behind the edit. A specific creative or technical challenge you solved. What made it interesting to work on, or how it performed.</p>
-          </div>
-        </div>
-
-        <div class="work-card">
-          <div class="embed-wrap">
-            <div class="embed-placeholder" style="font-size:11px;">
-              <svg width="30" height="30" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="24" cy="24" r="22" stroke="#F2F0EC" stroke-width="1.5"/>
-                <polygon points="20,14 38,24 20,34" fill="#F2F0EC"/>
-              </svg>
-              Embed video
-            </div>
-          </div>
-          <div class="work-card-body">
-            <h4>Project Title</h4>
-            <p>What the project was for, and who it was made for. The role you played on it — directing, producing, editing, or all three. The approach or concept behind the edit. A specific creative or technical challenge you solved. What made it interesting to work on, or how it performed.</p>
-          </div>
-        </div>
-
 
       </div>
     </div>
@@ -706,8 +764,7 @@
           </ul>
         </div>
         <div class="photo-placeholder contact-photo">
-          <!-- REPLACE: <img src="photo-2.jpg" alt="Viktor" /> -->
-          Your photo here
+          <img src="images/viktor-contact.jpg" alt="Viktor" />
         </div>
       </div>
     </div>
